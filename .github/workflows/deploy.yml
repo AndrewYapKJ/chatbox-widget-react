@@ -1,0 +1,42 @@
+name: Deploy React App to S3 & CloudFront
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on pushes to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build # Assumes a 'build' script in package.json
+
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
+
+      # - name: Deploy to S3 bucket
+      #   run: aws s3 sync ./build/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
+      #   # The --delete flag removes files in S3 that are no longer in the build output.
+
+      # - name: Invalidate CloudFront cache
+      #   uses: truemark/aws-cloudfront-invalidate-action@v2
+      #   with:
+      #     distribution-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+      #     paths: '/*' # Invalidates all files in the distribution
