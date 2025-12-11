@@ -30,10 +30,10 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ap-southeast-1  # Hardcode for now to test
 
       - name: Deploy to S3
-        run: aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
+        run: aws s3 sync ./dist s3://gis-chat-wizard --delete --region ap-southeast-1  # Explicit region here too
 
       # - name: Invalidate CloudFront cache
       #   uses: truemark/aws-cloudfront-invalidate-action@v2
