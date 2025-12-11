@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import ChatWidget from './ChatWidget';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import ChatWidget from './ChatWidget.jsx'
 
-// Expose a global init function
+
+// Expose a global init function for ChatWidget
 window.ChatWidget = {
   init: function (containerId = "chat-widget") {
     const el = document.getElementById(containerId);
@@ -12,12 +12,11 @@ window.ChatWidget = {
       console.error("ChatWidget: container not found:", containerId);
       return;
     }
-
-    const root = ReactDOM.createRoot(el);
+    const root = createRoot(el);
     root.render(
-      <React.StrictMode>
+      <StrictMode>
         <ChatWidget />
-      </React.StrictMode>
+      </StrictMode>
     );
   }
 };
@@ -28,5 +27,3 @@ document.addEventListener("DOMContentLoaded", function () {
     window.ChatWidget.init("chat-widget");
   }
 });
-
-reportWebVitals();
