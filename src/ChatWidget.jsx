@@ -34,6 +34,7 @@ const ChatWidget = () => {
     try {
       const res = await fetch(apiUrl, {
         method: 'POST',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg.text }),
       });
