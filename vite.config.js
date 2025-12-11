@@ -7,8 +7,8 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        entryFileNames: 'static/js/chatbox.js',
-        chunkFileNames: 'static/js/chatbox.chunk.js',
+        entryFileNames: 'static/js/chatbot.js',
+        chunkFileNames: 'static/js/chatbot.chunk.js',
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith('.css')) {
             return 'static/css/chatbot.css'

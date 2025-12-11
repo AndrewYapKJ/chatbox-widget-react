@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const ChatWidget = () => {
   // Config from window (set by embed script)
   const config = window.ChatbotConfig || {};
-  const apiUrl = config.apiUrl || 'https://your-backend.com/api/chat';
+  const apiUrl = config.apiUrl || 'https://xjex8zt2he.execute-api.ap-southeast-1.amazonaws.com/prod/chat';
   const botName = config.botName || 'Assistant';
   const primaryColor = config.primaryColor || '#007bff';
   const greeting = config.greeting || 'Hello! How can I help you today?';
