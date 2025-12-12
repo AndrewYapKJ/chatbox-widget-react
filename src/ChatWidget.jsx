@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const ChatWidget = () => {
   // Config from window (set by embed script)
   const config = window.ChatbotConfig || {};
-  const apiUrl = config.apiUrl || 'https://bx22azxigm5zpxxovu7gwq4n6q0uzrup.lambda-url.ap-southeast-1.on.aws';
+  const apiUrl =  '/api';
   const botName = config.botName || 'Assistant';
   const primaryColor = config.primaryColor || '#007bff';
   const greeting = config.greeting || 'Hello! How can I help you today?';
@@ -30,7 +30,7 @@ const ChatWidget = () => {
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setIsTyping(true);
-
+console.log('Chat Widget API URL:', apiUrl);
     try {
       const res = await fetch(apiUrl, {
         method: 'POST',
